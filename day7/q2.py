@@ -4,9 +4,9 @@ import numpy as np
 img=cv2.imread('IMG_3879.jpg')
 resized=cv2.resize(img,(640,640))
 image=cv2.cvtColor(resized,cv2.COLOR_BGR2GRAY)
-kernel=np.ones((2,2))
+kernel=np.ones((5,5))
 gaussian_blur=cv2.GaussianBlur(image,(5,5),2)
-edge=cv2.Canny(gaussian_blur,150,200)
+edge=cv2.Canny(gaussian_blur,40,280)
 contours,heirarchy=cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 areas=[cv2.contourArea(c) for c in contours]
 max_index=np.argmax(areas)
